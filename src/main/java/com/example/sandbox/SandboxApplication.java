@@ -3,6 +3,8 @@ package com.example.sandbox;
 import com.example.sandbox.dao.StudentDAO;
 import com.example.sandbox.entity.Student;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,9 +25,21 @@ public class SandboxApplication {
 
             // createMultipleStudents(studentDAO);
 
-            readStudent(studentDAO);
+            // readStudent(studentDAO);
 
+            queryForStudents(studentDAO);
         };
+    }
+
+    private void queryForStudents(StudentDAO studentDAO) {
+
+        // get a list of students
+        List<Student> theStudents = studentDAO.findAll();
+
+        // display list of students
+        for (Student tempStudent : theStudents) {
+            System.out.println(tempStudent);
+        }
     }
 
     private void readStudent(StudentDAO studentDAO) {
